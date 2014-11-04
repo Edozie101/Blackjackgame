@@ -86,17 +86,46 @@ describe BlackJack::Hand do
       end
 
       context 'when only one is an ace' do
-        it "is an array of length two"
+        it "is an array of length two" do
+        hand.add(BlackJack::Card.new(:heart, 'A'))
+        hand.add(BlackJack::Card.new(:heart, '6'))
+        expect(hand.length).to be == 2
+      end
+
         it "includes a value that is 1 more than the non-ace card value"
+        hand.add(BlackJack::Card.new(:heart, 'A'))
+        hand.add(BlackJack::Card.new(:heart, '6'))
+        expect(hand.length).to be == 2
         it "includes a value that is 11 more than the non-ace card value"
       end
     end
 
     # stretch exercises
     context 'when three cards' do
-
+      it "should have only 1 value" do
+        hand.add(BlackJack::Card.new(:spade, '2'))
+        hand.add(BlackJack::Card.new(:heart, '2'))
+        hand.add(BlackJack::Card.new(:heart, '3'))
+        expect(hand.values.length).to be == 1
       # what are the cases to consider?
       # write specs and make it go
+      end
+    end
+    context 'when three cards and one is an Ace' do
+      it "should have 2 values with and Ace" do
+        hand.add(BlackJack::Card.new(:spade, 'A'))
+        hand.add(BlackJack::Card.new(:heart, '2'))
+        hand.add(BlackJack::Card.new(:heart, '3'))
+        expect(hand.values.length).to be == 2
+      end
+    end
+    context 'when three cards and 2 are an Ace' do
+      it "should have 2 values with and Ace" do
+        hand.add(BlackJack::Card.new(:spade, 'A'))
+        hand.add(BlackJack::Card.new(:heart, 'A'))
+        hand.add(BlackJack::Card.new(:club, 'J'))
+        expect(hand.values.length).to be == 4
+      end
     end
   end
 
@@ -119,9 +148,11 @@ describe BlackJack::Hand do
     # figure out some rules for suggesting whether this hand should hit
     context "when the hand values are less  than 10 you should hit"
     it "is true"
+    expect(hand.hit?).to be true
     # check the internet or come up with your own ways to make this assessment
     context "when the hand values are greater than 10 you should hit"
-    it "is true "
+    it "is false "
+    expect(hand.hit?).to be false
     # write tests
     # make them pass
     # do this one at a time
