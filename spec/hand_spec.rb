@@ -132,14 +132,19 @@ describe BlackJack::Hand do
   describe '#bust?' do
     context 'when the values are all greater than 21' do
       it "is true"
-    end
+      hand.add(BlackJack::Card.new(:spade, '8'))
+      hand.add(BlackJack::Card.new(:heart, '9'))
+      hand.add(BlackJack::Card.new(:heart, '10'))
+      expect(hand.values.bust?).to be == true
 
     context 'when none of the values are greater than 21' do
       it 'is false'
+      expect(hand.values.bust?).to be == false
     end
 
     context 'when any of the values are less than or equal to 21' do
       it "is false"
+      expect(hand.values.bust?).to be == false
     end
   end
 
