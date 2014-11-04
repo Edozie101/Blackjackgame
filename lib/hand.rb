@@ -9,7 +9,7 @@ module BlackJack
       @hand.empty?
     end
     def values
-
+       @handtotal = []
       @hand.each do |card|
         @cardvalues << card.values
       end
@@ -23,7 +23,20 @@ module BlackJack
            sum.push(new_last)
 
          elsif sum.length != 1
-           sum.map!{|slot| slot +=cardval[1]}
+           sum.map!{|slot| slot +=cardval[0]}
+
+
+         else
+          sum[0] += cardval[0]
+
+        end
+
+      end
+
+      @handtotal = @sum unless self.size == 0
+
+      @handtotal
+
 
 
     end
