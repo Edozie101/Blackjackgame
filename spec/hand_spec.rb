@@ -66,10 +66,23 @@ describe BlackJack::Hand do
 
       context 'when both are aces' do
         it "is an array with length 3"
-
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+          expect(hand.length).to be == 3
         it "includes 2"
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+          expect(hand.values).to include(2)
+
         it "includes 12"
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+          expect(hand.values).to include(12)
+
         it "includes 22"
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+          hand.add(BlackJack::Card.new(:heart, 'A'))
+         expect(hand.values).to include(22)
       end
 
       context 'when only one is an ace' do
@@ -81,6 +94,7 @@ describe BlackJack::Hand do
 
     # stretch exercises
     context 'when three cards' do
+
       # what are the cases to consider?
       # write specs and make it go
     end
@@ -103,8 +117,11 @@ describe BlackJack::Hand do
   describe '#hit?' do
     # stretch exercises
     # figure out some rules for suggesting whether this hand should hit
+    context "when the hand values are less  than 10 you should hit"
+    it "is true"
     # check the internet or come up with your own ways to make this assessment
-    #
+    context "when the hand values are greater than 10 you should hit"
+    it "is true "
     # write tests
     # make them pass
     # do this one at a time
