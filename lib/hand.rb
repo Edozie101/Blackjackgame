@@ -17,7 +17,7 @@ module BlackJack
       end
 
       cardvalues.each do |cardval|
-        if cardval == [1,11]
+        if cardval.length > 1
           @sum = @sum.map!{|x| x += 1}
           new_last = sum.last+10
           sum.push(new_last)
